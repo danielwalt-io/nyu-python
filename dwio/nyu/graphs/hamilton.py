@@ -1,0 +1,4 @@
+
+
+class Hamilton(object):
+    pass
