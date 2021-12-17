@@ -32,7 +32,7 @@ class BinomialCoef(object):
                                         "*".join([_ for _ in denom]))
 
 
-class Stirling(object):
+class StirlingSecond(object):
     def __init__(self, objects, bins):
         self.obj = objects
         self.bins = bins
@@ -62,7 +62,7 @@ class Stirling(object):
                 valz.append(BinomialCoef(self.bins, i).short)
                 valz.append("*")
 
-            valz.append("({})^{} ".format(self.bins - i, self.objects))
+            valz.append("({})^{} ".format(self.bins - i, self.obj))
         valz.append("]")
         return "".join(valz)
 

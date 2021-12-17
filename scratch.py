@@ -5,7 +5,7 @@ from dwio.nyu.algos import CRT
 from dwio.nyu.counting import StarsAndBars
 from dwio.nyu.counting import BinomialCoef
 from dwio.nyu.counting import Partition
-from dwio.nyu.counting import Stirling
+from dwio.nyu.counting import StirlingSecond
 from dwio.nyu.recurrence import Recurrence
 
 from dwio.nyu.graphs import test_graph_from_degrees

@@ -4,7 +4,8 @@ from dwio.nyu.algos import eGCD
 
 def CRT(*eqns, show_work=False):
 
-    def inner(t1, t2, show_work=False):
+    def inner(t1, t2, _show=False):
+        # Single CRT iter
         a1 = t1[0]
         a2 = t2[0]
         n1 = t1[1]
@@ -15,12 +16,12 @@ def CRT(*eqns, show_work=False):
 
         gcd, m1, m2 = eGCD(n1, n2)
         if gcd != 1:
-            raise Exception("gcd is not 1 (valz {} and {}) (it is {})".format(
+            raise Exception("gcd is not 1 (for valz {} and {}) (gcd is {})".format(
                 n1, n2, gcd
             ))
         n1n2 = n1 * n2
         x = (a1 * m2 * n2 + a2 *m1 * n1) % n1n2
-        if show_work:
+        if _show:
             print("\niter; Solving:")
             print("  x={:d} mod {:d} and\n  x={:d} mod {:d}\n==========".format(
                 a1, n1, a2, n2
@@ -39,6 +40,7 @@ def CRT(*eqns, show_work=False):
                                                                     m2 % n1))
         return dict(x=x, mod=n1n2)
 
+    # Reduce all equations one by one
     all_eq = list(eqns)
     to_check = []
     l1 = all_eq.pop(0)

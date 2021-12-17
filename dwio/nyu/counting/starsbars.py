@@ -2,7 +2,7 @@ import math
 
 from dwio.nyu.counting import BinomialCoef
 from dwio.nyu.counting import Partition
-from dwio.nyu.counting import Stirling
+from dwio.nyu.counting import StirlingSecond
 
 # Heavily guided by:
 # https://www.careerbless.com/aptitude/qa/permutations_combinations_imp7.php
@@ -11,7 +11,8 @@ from dwio.nyu.counting import Stirling
 class StarsAndBars(object):
 
     def __init__(self, objects=1, bins=1, distinct_objects=False,
-                 distinct_bins=True, allow_zero_bins=False, order_matters=False):
+                 distinct_bins=True, allow_zero_bins=False,
+                 order_matters=False):
         self.obj = objects
         self.bins = bins
         self.d_obj = distinct_objects
@@ -29,15 +30,15 @@ class StarsAndBars(object):
             return "({}^{})".format(self.bins, self.obj)
         if self.d_bins and self.d_obj and not self.z_bins:
             return "{}! * {}".format(self.bins,
-                                     Stirling(self.obj, self.bins).formula)
+                                     StirlingSecond(self.obj, self.bins).formula)
         if not self.d_bins and self.d_obj and self.z_bins:
             formulas = []
             for i in range(1, self.bins + 1):
-                formulas.append(Stirling(self.obj, i).formula)
+                formulas.append(StirlingSecond(self.obj, i).formula)
             return " + ".join(formulas)
 
         if not self.d_bins and self.d_obj and not self.z_bins:
-            return Stirling(self.obj, self.bins).formula
+            return StirlingSecond(self.obj, self.bins).formula
 
         if not self.d_bins and not self.d_obj and self.z_bins:
             formulas = []
@@ -60,14 +61,14 @@ class StarsAndBars(object):
             return self.bins**self.obj
         if self.d_bins and self.d_obj and not self.z_bins:
             return math.factorial(self.bins) * \
-                   Stirling(self.obj, self.bins).count
+                   StirlingSecond(self.obj, self.bins).count
         if not self.d_bins and self.d_obj and self.z_bins:
             valz = 0
             for i in range(1, self.bins + 1):
-                valz += Stirling(self.obj, i).count
+                valz += StirlingSecond(self.obj, i).count
             return valz
         if not self.d_bins and self.d_obj and not self.z_bins:
-            return Stirling(self.obj, self.bins).count
+            return StirlingSecond(self.obj, self.bins).count
 
         if not self.d_bins and not self.d_obj and self.z_bins:
             valz = 0
