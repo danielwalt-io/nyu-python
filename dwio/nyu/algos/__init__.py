@@ -1,2 +1,2 @@
 from dwio.nyu.algos.egcd import eGCD
-from dwio.nyu.algos.crd import CRD
+from dwio.nyu.algos.crt import CRT

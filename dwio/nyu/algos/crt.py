@@ -2,7 +2,7 @@
 from dwio.nyu.algos import eGCD
 
 
-def CRD(*eqns, show_work=False):
+def CRT(*eqns, show_work=False):
 
     def inner(t1, t2, show_work=False):
         a1 = t1[0]
